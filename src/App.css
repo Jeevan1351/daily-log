@@ -1,9 +1,10 @@
 .App {
   min-height: 100vh;
-  background-color: #dee3ea;
+  background-color: #faf2f0;
 }
 #top ul {
   list-style-type: none;
+  z-index: 1;
   margin: 0;
   padding: 0;
   background-color: #CAD1D9;
@@ -11,6 +12,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,.2);
 }
 
 li h2 {
@@ -41,9 +43,125 @@ li h1 {
 
 .card {
   text-align: center;
-  border: 5px solid black;
-  padding: 5px;
+  border-radius: 15px 15px 15px 15px;
   margin: 100px 50px 50px 50px;
   min-width: 25%;
   height: 50vh;
+  position: relative;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.3);
+  transition: 0.3s;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border: 0px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #CAD1D9; 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black; 
+}
+.card:hover {
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,.2);
+}
+
+#activities {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  right: 0;
+  bottom: 10%;
+  overflow-y: auto;
+  background-color: #DEE3Ea;
+}
+
+#activities ul {
+  list-style-type: none;
+}
+
+#title {
+  border-radius: 15px 15px 0px 0px;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  height: 20%;
+  background-color: #D2E3BB;
+}
+
+/* .add {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+  background-color: #D2E3BB;
+  bottom: 0;
+  padding-bottom: 15px;
+}
+
+.add button {
+  border-radius: 50%;
+  padding: 8px 10px 8px 10px;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.add button:hover {
+  background-color: rgb(74, 201, 74);
+} */
+
+/* .add input {
+  width: 80%;
+  background-color: transparent;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 2px solid red;
+} */
+.add{
+position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+}
+.add:after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    height: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: 0% 0%;
+    background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+    background-size: 500% auto;
+    animation: gradient 3s linear infinite;
+  }
+
+.add input {
+  flex-grow: 1;
+  /* color: $input-text-active; */
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+}
+
+.add button {
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  transition: color .25s;
+}
+.add button:hover {
+    color: blue;
+  }
