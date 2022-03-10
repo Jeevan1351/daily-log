@@ -1,6 +1,6 @@
-function Nav()
+function Nav(props)
 {
-    const d = new Date()
+    const d = props.props
     const days = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednsday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
     const today = days[d.getDay()]
     return <><ul>

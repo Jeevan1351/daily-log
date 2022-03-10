@@ -11,33 +11,55 @@ import * as Realm from 'realm-web';
 function App() {
   
   const [value, setValue] = useState()
-  useEffect(  async()=> {
-    const realm_app_id = 'daily-log-yovdr'
-    const profile = new Realm.App({id: realm_app_id})
-    const credentials = Realm.Credentials.anonymous();
-    try{
+  const [today, setToday] = useState()
+  const realm_app_id = 'daily-log-yovdr'
+  const profile = new Realm.App({id: realm_app_id})
+  const credentials = Realm.Credentials.anonymous();
+  var d = new Date()
+  const days = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednsday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
+  const day = days[d.getDay()]
+  useEffect(()=> {
+    async function fetchData(){
+
+      try{
+        const user = await profile.logIn(credentials);
+        const v = await user.functions.getAllDays();
+        setValue(v)
+        setToday(v.filter((tday) => tday.date === `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`))
+      }
+      catch(error)
+      {
+        console.log(error)
+      }
+    }
+    fetchData()
+  }, [])
+
+  async function handleChange(newVals, date)
+  {
+    console.log(`updating ${date} list to`, newVals)
+    try {
       const user = await profile.logIn(credentials);
-      const v = await user.functions.getAllDays();
-      setValue(v)
+      await user.functions.updateActivities(newVals)
+
     }
     catch(error)
     {
       console.log(error)
     }
-  }, [])
-
-  function handleChange(newVals)
-  {
-    console.log("updating to", newVals)
   }
+
   return (
     <div className="App">
       <div id='top'>
-        <Nav />
+        <Nav props={d}/>
       </div>
       <div id='support'></div>
       <div className='content'>
+        {(today === [] || today === undefined)?<><Card value={{"day": day, "date": `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`, 'activities': ["Shaka Laka"]}} onChange={handleChange}/></>:<Card value={today[0]} key='121212' onChange={handleChange} bomb={{today}}/>
+}
         {value && value.map((val) => {
+          if (val.date !== `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}` )
           return <Card value={val} key={val._id} onChange={handleChange}/>
         })}
       </div>

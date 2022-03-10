@@ -1,14 +1,20 @@
 import { useState } from "react"
 
 function Card(props) {
+    console.log(props.value)
     const [currVal, setCurrVal] = useState("")
     const [localAct, setLocalAct] = useState(props.value.activities)
-    function handleSubmit(event)
+    function handleSubmit()
     {
         if (currVal.trim() !== "")
         {
             console.log(currVal)
-            props.onChange(currVal, props.value.date)
+            var temp = props.value
+            temp.activities = localAct
+            temp.activities.push(currVal)
+            setLocalAct(temp.activities)
+            console.log('local acts are', localAct)
+            props.onChange(temp, props.value.date)
             setCurrVal("")
         }
     }
