@@ -25,6 +25,11 @@ function App() {
       console.log(error)
     }
   }, [])
+
+  function handleChange(newVals)
+  {
+    console.log("updating to", newVals)
+  }
   return (
     <div className="App">
       <div id='top'>
@@ -33,7 +38,7 @@ function App() {
       <div id='support'></div>
       <div className='content'>
         {value && value.map((val) => {
-          return <Card value={val} key={val._id}/>
+          return <Card value={val} key={val._id} onChange={handleChange}/>
         })}
       </div>
     </div>

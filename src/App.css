@@ -94,7 +94,7 @@ li h1 {
   background-color: #D2E3BB;
 }
 
-/* .add {
+.add {
   position: absolute;
   height: 10%;
   width: 100%;
@@ -112,56 +112,13 @@ li h1 {
 
 .add button:hover {
   background-color: rgb(74, 201, 74);
-} */
+}
 
-/* .add input {
+.add input {
   width: 80%;
   background-color: transparent;
   padding: 12px 20px;
   margin: 8px 0;
   border: none;
   border-bottom: 2px solid red;
-} */
-.add{
-position: relative;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  border-radius: 2px;
-  padding: 1.4rem 2rem 1.6rem;
 }
-.add:after {
-    content: "";
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: 999;
-    height: 2px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    background-position: 0% 0%;
-    background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
-    background-size: 500% auto;
-    animation: gradient 3s linear infinite;
-  }
-
-.add input {
-  flex-grow: 1;
-  /* color: $input-text-active; */
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  vertical-align: middle;
-}
-
-.add button {
-  font-size: 2.4rem;
-  line-height: 2.4rem;
-  vertical-align: middle;
-  transition: color .25s;
-}
-.add button:hover {
-    color: blue;
-  }
