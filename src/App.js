@@ -37,11 +37,15 @@ function App() {
 
   async function handleChange(newVals, date)
   {
-    console.log(`updating ${date} list to`, newVals)
     try {
       const user = await profile.logIn(credentials);
       await user.functions.updateActivities(newVals)
-
+      var t = value
+      var c = t.find(a => a.date === date)
+      var ind = t.indexOf(c)
+      t[ind] = newVals
+      setValue(t)
+      console.log(value)
     }
     catch(error)
     {
@@ -56,7 +60,7 @@ function App() {
       </div>
       <div id='support'></div>
       <div className='content'>
-        {(today === [] || today === undefined)?<><Card value={{"day": day, "date": `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`, 'activities': ["Shaka Laka"]}} onChange={handleChange}/></>:<Card value={today[0]} key='121212' onChange={handleChange} bomb={{today}}/>
+        {(today === [] || today === undefined || today[0] === undefined)?<><Card value={{"day": day, "date": `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`, 'activities': ["Shaka Laka"]}} onChange={handleChange}/></>:<Card value={today[0]} key='121212' onChange={handleChange} bomb={{today}}/>
 }
         {value && value.map((val) => {
           if (val.date !== `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}` )
