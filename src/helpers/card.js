@@ -14,33 +14,35 @@ function Card(props) {
             props.onChange(temp, props.value.date)
             setCurrVal("")
         }
-        if (trig)
-        {
-            var temp = props.value
-            temp.activities = localAct
-            props.onChange(temp, temp.date)
-            setLocalAct(localAct)   
-        }
+        // if (trig)
+        // {
+        //     var temp = props.value
+        //     temp.activities = localAct
+        //     props.onChange(temp, temp.date)
+        //     setLocalAct(localAct)   
+        // }
     }
 
     function handleInput(event)
     {
         setCurrVal(event.target.value)
     }
-    function handleDelete(index)
-    {
-        var temp = localAct
-        var c = temp.splice(index, 1)
-        console.log('sliced', c, temp)
-        setLocalAct(temp)
-        handleSubmit(true)
-    }
+    // function handleDelete(index)
+    // {
+    //     var temp = localAct
+    //     var c = temp.splice(index, 1)
+    //     console.log('sliced', c, temp)
+    //     setLocalAct(temp)
+    //     handleSubmit(true)
+    // }
     return (localAct)?<><div className='card' style={{color: `red`}}>
-            <p id='title'>{props.value.day} {props.value.date}</p>
+            <h1 id='title'>{props.value.day} - {props.value.date}</h1>
             <div id='activities'>
                 <ul>
                     {localAct.map((act, index) =>{
-                        return <li key={index}><p>{act}</p><button onClick={(index)=> handleDelete(index)}>X</button></li>
+                        return <li key={index}><p>{act}</p>
+                        {/* <button onClick={(index)=> handleDelete(index)}>X</button> */}
+                        </li>
                     })}
                 </ul>
             </div>

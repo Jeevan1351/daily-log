@@ -23,8 +23,46 @@ function App() {
 
       try{
         const user = await profile.logIn(credentials);
-        const v = await user.functions.getAllDays();
-        setValue(v)
+        var v = await user.functions.getAllDays();
+        v = v.sort((a,b) => {
+          const alst = a.date.split("/")
+          const blst = b.date.split('/')
+          if(parseInt(alst[2]) < parseInt(blst[2]))
+          {
+            return parseInt(alst[2]) - parseInt(blst[2])
+          }
+          else if (parseInt(alst[2]) > parseInt(blst[2]))
+          {
+            return parseInt(alst[2]) - parseInt(blst[2])
+          }
+          else
+          {
+            if(parseInt(alst[1]) < parseInt(blst[1]))
+            {
+              return parseInt(alst[1]) - parseInt(blst[1])
+            }
+            else if (parseInt(alst[1]) > parseInt(blst[1]))
+            {
+              return parseInt(alst[1]) - parseInt(blst[1])
+            }
+            else
+            {
+              if(parseInt(alst[0]) < parseInt(blst[0]))
+              {
+                return parseInt(alst[0]) - parseInt(blst[0])
+              }
+              else if (parseInt(alst[0]) > parseInt(blst[0]))
+              {
+                return parseInt(alst[0]) - parseInt(blst[0])
+              }
+              else
+              {
+                return 0;
+              }
+            }
+          }
+        })
+        setValue(v.reverse())
         setToday(v.filter((tday) => tday.date === `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`))
       }
       catch(error)
@@ -45,7 +83,6 @@ function App() {
       var ind = t.indexOf(c)
       t[ind] = newVals
       setValue(t)
-      console.log(value)
     }
     catch(error)
     {

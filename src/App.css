@@ -1,6 +1,9 @@
 .App {
   min-height: 100vh;
-  background-color: #faf2f0;
+  background-image: url('./helpers/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 #top ul {
   list-style-type: none;
@@ -101,17 +104,23 @@ li h1 {
   background-color: #D2E3BB;
   bottom: 0;
   padding-bottom: 15px;
+  border-radius: 0px 0px 15px 15px;
 }
 
 .add button {
-  border-radius: 50%;
+  border-radius: 20%;
   padding: 8px 10px 8px 10px;
   background-color: transparent;
   transition: 0.3s;
+  font-size: large;
+  font-weight: 400;
+  border: 2px solid #201F1D;
 }
 
 .add button:hover {
-  background-color: rgb(74, 201, 74);
+  border-radius: 30%;
+  background-color: #e2b250;
+  border: 0px;
 }
 
 .add input {
@@ -120,5 +129,19 @@ li h1 {
   padding: 12px 20px;
   margin: 8px 0;
   border: none;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #201F1D;
+  color: #201F1D;
+  font-size: large;
+  font-weight: 400;
+}
+
+#title {
+  color: #2c2b29;
+  padding-top: 25px;
+}
+
+#activities p{
+  color: #201F1D;
+  font-size: large;
+  font-weight: 600;
 }
