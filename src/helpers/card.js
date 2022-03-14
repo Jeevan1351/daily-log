@@ -8,11 +8,21 @@ function Card(props) {
         if (currVal.trim() !== "")
         {
             var temp = props.value
-            temp.activities = localAct
-            temp.activities.push(currVal)
-            setLocalAct(temp.activities)
-            props.onChange(temp, props.value.date)
-            setCurrVal("")
+            if (props.value.activities === ['Shaka Laka'])
+            {
+                temp.activities = localAct
+                temp.activities = [currVal]
+                setLocalAct(temp.activities)
+                props.onChange(temp, props.value.date)
+                setCurrVal("")
+            }
+            else{
+                temp.activities = localAct
+                temp.activities.push(currVal)
+                setLocalAct(temp.activities)
+                props.onChange(temp, props.value.date)
+                setCurrVal("")
+            }
         }
         // if (trig)
         // {
